@@ -12,10 +12,10 @@ export default function Player() {
   );
 
   return (
-    <>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
       <h1>Радіо Єзуч</h1>
-      <h2>Hehehe</h2>
+
       <Player />
-    </>
+    </div>
   );
 }
