@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/radio-jezuch/static/css/main.333b9713.css",
+    "main.js": "/radio-jezuch/static/js/main.b704af3f.js",
+    "index.html": "/radio-jezuch/index.html",
+    "main.333b9713.css.map": "/radio-jezuch/static/css/main.333b9713.css.map",
+    "main.b704af3f.js.map": "/radio-jezuch/static/js/main.b704af3f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.333b9713.css",
+    "static/js/main.b704af3f.js"
+  ]
+}
