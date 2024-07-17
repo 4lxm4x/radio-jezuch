@@ -1,7 +1,6 @@
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import axios from 'axios';
-import { computeHeadingLevel } from '@testing-library/react';
 
 async function getData() {
   try {
