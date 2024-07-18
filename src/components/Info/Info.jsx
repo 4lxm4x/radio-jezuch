@@ -9,23 +9,23 @@ export default function Info() {
     songtitle: 'SongTitle',
     imgbig: '',
   });
+  const [currentSong, setCurrentSong] = useState(null);
 
   useEffect(() => {
     async function updateInfo() {
       const data = await getData();
-      // setStreamData(data);
-      console.log(streamData.artist);
-      console.log(streamData.songtitle);
-      if (
-        data.artist !== streamData.artist ||
-        data.songtitle !== streamData.songtitle
-      ) {
-        setStreamData(data);
-      }
+
+      setStreamData(data);
+      setCurrentSong({ artist: data.artist, songtitle: data.songtitle });
     }
 
-    setInterval(updateInfo, 5000);
-  }, [streamData.artist, streamData.songtitle]);
+    updateInfo();
+  }, []);
+
+  setInterval(() => {
+    const newData = getData();
+    console.log('🚀 ~ setInterval ~ newData:', newData);
+  }, 5000);
 
   async function getData() {
     try {
@@ -40,13 +40,6 @@ export default function Info() {
       console.log(error);
     }
   }
-
-  // setTimeout(async () => {
-  //   const data = await getData();
-
-  //   setStreamData(data);
-  //   return streamData;
-  // }, 1001);
 
   return (
     <div>
