@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/radio-jezuch/static/css/main.333b9713.css",
-    "main.js": "/radio-jezuch/static/js/main.09b40d2d.js",
+    "main.js": "/radio-jezuch/static/js/main.43c70a3c.js",
     "index.html": "/radio-jezuch/index.html",
     "main.333b9713.css.map": "/radio-jezuch/static/css/main.333b9713.css.map",
-    "main.09b40d2d.js.map": "/radio-jezuch/static/js/main.09b40d2d.js.map"
+    "main.43c70a3c.js.map": "/radio-jezuch/static/js/main.43c70a3c.js.map"
   },
   "entrypoints": [
     "static/css/main.333b9713.css",
-    "static/js/main.09b40d2d.js"
+    "static/js/main.43c70a3c.js"
   ]
 }
