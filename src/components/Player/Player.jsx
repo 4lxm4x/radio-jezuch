@@ -1,26 +1,10 @@
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-import axios from 'axios';
-
-async function getData() {
-  try {
-    const { data } = await axios(
-      'https://myradio24.com//users/jezuch/status.json'
-    );
-    console.log(data);
-
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-setTimeout(getData, 1001);
 
 export default function Player() {
   const Player = () => (
     <AudioPlayer
-      autoPlay
+      // autoPlay
       src="https://myradio24.org/jezuch"
       onPlay={e => console.log('onPlay')}
       // other props here
@@ -28,9 +12,13 @@ export default function Player() {
   );
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <h1>Радіо Єзуч</h1>
-
+    <div
+      style={{
+        display: 'flex',
+        // position: 'absolute',
+        width: '80%',
+      }}
+    >
       <Player />
     </div>
   );
