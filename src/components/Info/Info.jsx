@@ -1,7 +1,5 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
-
-// const initialData = { artist: 'Artist', songtitle: 'SongTitle', imgbig: '' };
+import { useState, useEffect } from 'react';
 
 export default function Info() {
   const [streamData, setStreamData] = useState({
@@ -9,32 +7,26 @@ export default function Info() {
     songtitle: 'SongTitle',
     imgbig: '',
   });
-  const [currentSong, setCurrentSong] = useState(null);
 
   useEffect(() => {
-    async function updateInfo() {
+    const interval = setInterval(async function updateInfo() {
       const data = await getData();
+      if (data.songtitle !== streamData.songtitle) {
+        setStreamData(data);
+      }
+    }, 5000);
 
-      setStreamData(data);
-      setCurrentSong({ artist: data.artist, songtitle: data.songtitle });
-    }
-
-    updateInfo();
-  }, []);
-
-  setInterval(() => {
-    const newData = getData();
-    console.log('🚀 ~ setInterval ~ newData:', newData);
-  }, 5000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [streamData.songtitle]);
 
   async function getData() {
     try {
       const { data } = await axios(
         'https://myradio24.com//users/jezuch/status.json'
       );
-      console.log(data);
-      // const { artist, songtitle, imgbig } = data;
-      // setStreamData({ artist, songtitle, imgbig });
+
       return data;
     } catch (error) {
       console.log(error);
@@ -43,7 +35,6 @@ export default function Info() {
 
   return (
     <div>
-      {/* <img src={streamData.imgbig} alt={streamData.song} /> */}
       <h2>{streamData.artist}</h2>
       <h3>{streamData.songtitle}</h3>
     </div>
