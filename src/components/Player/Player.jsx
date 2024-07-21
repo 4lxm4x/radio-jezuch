@@ -8,6 +8,7 @@ export default function Player() {
       src="https://myradio24.org/jezuch"
       onPlay={e => console.log('onPlay')}
       // other props here
+      showJumpControls={false}
     />
   );
 

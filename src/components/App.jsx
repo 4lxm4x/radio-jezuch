@@ -1,9 +1,26 @@
+import { useEffect, useState } from 'react';
 import Actions from './Actions/Actions';
 import Fun from './Fun/Fun';
 import Info from './Info/Info';
 import Player from './Player/Player';
+import { getData } from 'api';
+import GreetingView from './GreetingView/GreetingView';
 
 export const App = () => {
+  const [dataLoaded, setDataLoaded] = useState(false);
+  const [initialData, setInitialData] = useState({});
+
+  useEffect(() => {
+    async function loadData() {
+      const initialData = await getData();
+
+      setDataLoaded(true);
+      setInitialData(initialData);
+    }
+
+    loadData();
+  }, []);
+
   return (
     <div
       style={{
@@ -19,7 +36,7 @@ export const App = () => {
     >
       <h1>Радіо Єзуч</h1>
       <Fun />
-      <Info />
+      {dataLoaded ? <Info initialData={initialData} /> : <GreetingView />}
       <Player />
       <Actions />
     </div>
