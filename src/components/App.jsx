@@ -3,8 +3,9 @@ import Actions from './Actions/Actions';
 import Fun from './Fun/Fun';
 import Info from './Info/Info';
 import Player from './Player/Player';
-import { getData } from 'api';
+import { getData } from 'utils/api';
 import GreetingView from './GreetingView/GreetingView';
+import ScaleLoader from 'react-spinners/ScaleLoader';
 
 export const App = () => {
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -34,7 +35,7 @@ export const App = () => {
         width: '100%',
       }}
     >
-      <h1>Радіо Єзуч</h1>
+      <h1 style={{ fontSize: 36 }}>Радіо Єзуч</h1>
       <Fun />
       {dataLoaded ? <Info initialData={initialData} /> : <GreetingView />}
       <Player />

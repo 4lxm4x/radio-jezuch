@@ -21,7 +21,7 @@ export async function getCover(artist, songtitle) {
 
   const imageUrl =
     dataFromLastFM.data?.track?.album?.image[2]['#text'] ??
-    require('./images/placeholder.png');
+    require('../images/jezuch logo.png');
 
   return imageUrl;
 }
