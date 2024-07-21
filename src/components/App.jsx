@@ -5,7 +5,7 @@ import Info from './Info/Info';
 import Player from './Player/Player';
 import { getData } from 'utils/api';
 import GreetingView from './GreetingView/GreetingView';
-import ScaleLoader from 'react-spinners/ScaleLoader';
+// import ScaleLoader from 'react-spinners/ScaleLoader';
 
 export const App = () => {
   const [dataLoaded, setDataLoaded] = useState(false);
