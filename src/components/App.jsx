@@ -1,27 +1,11 @@
-import { useEffect, useState } from 'react';
 import Actions from './Actions/Actions';
 import Fun from './Fun/Fun';
 import Info from './Info/Info';
 import Player from './Player/Player';
-import { getData } from 'utils/api';
-import GreetingView from './GreetingView/GreetingView';
+
 // import ScaleLoader from 'react-spinners/ScaleLoader';
 
 export const App = () => {
-  const [dataLoaded, setDataLoaded] = useState(false);
-  const [initialData, setInitialData] = useState({});
-
-  useEffect(() => {
-    async function loadData() {
-      const initialData = await getData();
-
-      setDataLoaded(true);
-      setInitialData(initialData);
-    }
-
-    loadData();
-  }, []);
-
   return (
     <div
       style={{
@@ -37,7 +21,7 @@ export const App = () => {
     >
       <h1 style={{ fontSize: 36 }}>Радіо Єзуч</h1>
       <Fun />
-      {dataLoaded ? <Info initialData={initialData} /> : <GreetingView />}
+      <Info />
       <Player />
       <Actions />
     </div>

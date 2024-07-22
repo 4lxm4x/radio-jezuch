@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 import { getData, getCover } from 'utils/api';
 
-export default function Info(initialData) {
-  const [streamData, setStreamData] = useState(initialData);
+import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
+export default function Info() {
+  const [streamData, setStreamData] = useState({ songtitle: '' });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(async function updateInfo() {
@@ -18,6 +21,7 @@ export default function Info(initialData) {
         };
 
         setStreamData(fullData);
+        setLoading(false);
       }
     }, 5000);
 
@@ -27,10 +31,20 @@ export default function Info(initialData) {
   }, [streamData.songtitle]);
 
   return (
-    <div>
-      <img src={streamData.normalImg} alt={streamData.songtitle} width={174} />
-      <h2 style={{ fontSize: 20 }}>{streamData.artist}</h2>
-      <h3 style={{ fontSize: 16 }}>{streamData.songtitle}</h3>
-    </div>
+    <Box>
+      {loading ? (
+        <CircularProgress />
+      ) : (
+        <Box>
+          <img
+            src={streamData.normalImg}
+            alt={streamData.songtitle}
+            width={174}
+          />
+          <h2 style={{ fontSize: 20 }}>{streamData.artist}</h2>
+          <h3 style={{ fontSize: 16 }}>{streamData.songtitle}</h3>
+        </Box>
+      )}
+    </Box>
   );
 }

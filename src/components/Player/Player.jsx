@@ -9,6 +9,7 @@ export default function Player() {
       onPlay={e => console.log('onPlay')}
       // other props here
       showJumpControls={false}
+      showProgressBar={false}
     />
   );
 
