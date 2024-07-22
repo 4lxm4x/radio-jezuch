@@ -3,7 +3,8 @@ import { getData, getCover } from 'utils/api';
 
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
-export default function Info() {
+
+export default function Info(play) {
   const [streamData, setStreamData] = useState({ songtitle: '' });
   const [loading, setLoading] = useState(true);
 

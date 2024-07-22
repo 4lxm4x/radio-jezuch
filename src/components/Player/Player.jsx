@@ -1,15 +1,21 @@
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 
-export default function Player() {
+export default function Player({ onPlay }) {
   const Player = () => (
     <AudioPlayer
-      autoPlay
+      // autoPlay
       src="https://myradio24.org/jezuch"
-      onPlay={e => console.log('onPlay')}
-      // other props here
+      onPlay={() => {
+        onPlay(true);
+        console.log('onPlay');
+      }}
+      onPause={() => {
+        console.log('onPause');
+      }}
       showJumpControls={false}
-      showProgressBar={false}
+      customProgressBarSection={['']}
+      customAdditionalControls={['']}
     />
   );
 
@@ -17,8 +23,9 @@ export default function Player() {
     <div
       style={{
         display: 'flex',
-        // position: 'absolute',
+
         width: '80%',
+        maxWidth: '400px',
       }}
     >
       <Player />
