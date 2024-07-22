@@ -7,7 +7,7 @@ import Player from './Player/Player';
 // import ScaleLoader from 'react-spinners/ScaleLoader';
 
 export const App = () => {
-  const [play, setPlay] = useState(false);
+  const [play, setPlay] = useState();
   const firstRender = useRef(false);
 
   function handlePlay(status) {
