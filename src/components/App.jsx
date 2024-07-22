@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import Actions from './Actions/Actions';
 import Fun from './Fun/Fun';
 import Info from './Info/Info';
@@ -8,11 +8,11 @@ import Player from './Player/Player';
 
 export const App = () => {
   const [play, setPlay] = useState();
-  const firstRender = useRef(false);
+  // const firstRender = useRef(false);
 
   function handlePlay(status) {
     setPlay(status);
-    firstRender.current = true;
+    // firstRender.current = true;
   }
 
   return (
@@ -30,7 +30,7 @@ export const App = () => {
     >
       <h1 style={{ fontSize: 36 }}>Радіо Єзуч</h1>
       <Fun />
-      {firstRender.current && <Info play={play} />}
+      {play && <Info play={play} />}
       <Player onPlay={handlePlay} />
       <Actions />
     </div>
