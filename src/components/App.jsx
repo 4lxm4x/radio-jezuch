@@ -7,7 +7,7 @@ import Player from './Player/Player';
 // import ScaleLoader from 'react-spinners/ScaleLoader';
 
 export const App = () => {
-  const [play, setPlay] = useState();
+  const [play, setPlay] = useState(false);
   // const firstRender = useRef(false);
 
   function handlePlay(status) {
@@ -31,7 +31,7 @@ export const App = () => {
       <h1 style={{ fontSize: 36 }}>Радіо Єзуч</h1>
       <Fun />
       {play && <Info play={play} />}
-      <Player onPlay={handlePlay} />
+      <Player onPlay={handlePlay} status={play} />
       <Actions />
     </div>
   );
