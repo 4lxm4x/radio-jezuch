@@ -31,7 +31,7 @@ export const App = () => {
       <h1 style={{ fontSize: 36 }}>Радіо Єзуч</h1>
       <Fun />
       {play && <Info play={play} />}
-      <Player onPlay={handlePlay} status={play} />
+      <Player onPlay={handlePlay} />
       <Actions />
     </div>
   );
