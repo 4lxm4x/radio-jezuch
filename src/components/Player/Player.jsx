@@ -1,9 +1,7 @@
 import AudioPlayer from 'react-h5-audio-player';
 import { Box } from '@mui/material';
 import { FaPlay, FaPause } from 'react-icons/fa';
-import Equalizer from 'r3f-equalizer';
 
-import { useRef } from 'react';
 import 'react-h5-audio-player/lib/styles.css';
 // import { display } from '@mui/system';
 
