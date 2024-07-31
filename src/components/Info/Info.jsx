@@ -4,13 +4,15 @@ import { getData, getCover } from 'utils/api';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 
-export default function Info(play) {
+export default function Info({ playlist }) {
   const [streamData, setStreamData] = useState({ songtitle: '' });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(async function updateInfo() {
       const data = await getData();
+      console.log('🚀 ~ interval ~ data:', data);
+
       if (data.songtitle !== streamData.songtitle) {
         const imageUrl = await getCover(data.artist, data.songtitle);
         const fullData = {
@@ -20,6 +22,7 @@ export default function Info(play) {
               ? require('../../images/placeholder.png')
               : imageUrl,
         };
+        playlist(data.songs);
 
         setStreamData(fullData);
         setLoading(false);
@@ -29,7 +32,7 @@ export default function Info(play) {
     return () => {
       clearInterval(interval);
     };
-  }, [streamData.songtitle]);
+  }, [playlist, streamData.songtitle]);
 
   return (
     <Box>

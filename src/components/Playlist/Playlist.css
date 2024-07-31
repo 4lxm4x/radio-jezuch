@@ -1,0 +1,4 @@
+.ag-theme-quartz {
+  /* disable all borders */
+  --ag-borders: none;
+}

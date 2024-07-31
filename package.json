@@ -12,6 +12,7 @@
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
+    "ag-grid-react": "^32.0.2",
     "axios": "^1.7.2",
     "r3f-equalizer": "^1.4.2",
     "react": "^18.1.0",
