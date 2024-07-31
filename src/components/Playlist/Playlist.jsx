@@ -8,9 +8,9 @@ export default function Playlist({ playlist }) {
     type: 'fitCellContents',
   };
   const colDefs = [
-    { field: 'time', flex: 1 },
+    { field: 'time', flex: 1, width: 61, cellStyle: { padding: 1 } },
 
-    { field: 'song', flex: 3 },
+    { field: 'song', flex: 3, cellStyle: { paddingLeft: 5, paddingRight: 5 } },
   ];
   console.log(playlist);
   return (
