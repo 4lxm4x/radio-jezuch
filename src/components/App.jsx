@@ -1,11 +1,17 @@
 import { useState } from 'react';
 import Playlist from './Playlist/Playlist';
-import Fun from './Fun/Fun';
+// import Fun from './Fun/Fun';
 import Info from './Info/Info';
 import Player from './Player/Player';
-import { BottomNavigationAction, BottomNavigation, Paper } from '@mui/material';
-import { FaList } from 'react-icons/fa';
+import {
+  BottomNavigationAction,
+  BottomNavigation,
+  Paper,
+  Box,
+} from '@mui/material';
+import { FaList, FaListAlt } from 'react-icons/fa';
 import { CgReorder } from 'react-icons/cg';
+import { colors } from 'utils/Colors';
 
 // import ScaleLoader from 'react-spinners/ScaleLoader';
 
@@ -31,23 +37,35 @@ export const App = () => {
   }
 
   return (
-    <div
-      style={{
-        height: '100vh',
+    <Box
+      sx={{
         display: 'flex',
-        justifyContent: 'flex-start',
         flexDirection: 'column',
         alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-        width: '100%',
       }}
     >
-      <h1 style={{ fontSize: 36 }}>Радіо Єзуч</h1>
-      <Fun />
-      {play && <Info playlist={handlePlaylist} />}
-      <Player onPlay={handlePlay} />
-      {play && isPlistVisible && <Playlist playlist={playlist} />}
+      <Box>Радіо Єзуч</Box>
+      <Paper
+        sx={{ boxShadow: 2 }}
+        style={{
+          height: '88vh',
+          display: 'flex',
+          // justifyContent: 'flex-start',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: 40,
+          color: '#010101',
+          width: '90vw',
+          borderRadius: 5,
+          backgroundColor: colors.back,
+          marginBottom: 50,
+        }}
+      >
+        {play && <Info playlist={handlePlaylist} />}
+        <Player onPlay={handlePlay} />
+        {play && isPlistVisible && <Playlist playlist={playlist} />}
+      </Paper>
       <Paper
         sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
         elevation={3}
@@ -57,6 +75,7 @@ export const App = () => {
             <BottomNavigationAction
               label="Show Playlist"
               onClick={showPlaylist}
+              sx={{ color: colors.main }}
               icon={<FaList size={'2em'} />}
             />
           )}
@@ -64,15 +83,17 @@ export const App = () => {
             <BottomNavigationAction
               label="Hide Playlist"
               onClick={hidePlaylist}
-              icon={<FaList size={'2em'} />}
+              sx={{ color: colors.main }}
+              icon={<FaListAlt size={'2em'} />}
             />
           )}
           <BottomNavigationAction
             label="Order Table"
+            sx={{ color: colors.main }}
             icon={<CgReorder size={'2em'} />}
           />
         </BottomNavigation>
       </Paper>
-    </div>
+    </Box>
   );
 };

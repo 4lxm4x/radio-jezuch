@@ -39,7 +39,7 @@ export default function Info({ playlist }) {
       {loading ? (
         <CircularProgress />
       ) : (
-        <Box>
+        <Box maxWidth="sm">
           <img
             src={streamData.normalImg}
             alt={streamData.songtitle}
