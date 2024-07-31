@@ -2,7 +2,6 @@ import { AgGridReact } from 'ag-grid-react'; // React Data Grid Component
 import 'ag-grid-community/styles/ag-grid.css'; // Mandatory CSS required by the Data Grid
 import 'ag-grid-community/styles/ag-theme-quartz.css';
 import './Playlist.css';
-import { textAlign } from '@mui/system';
 
 export default function Playlist({ playlist }) {
   const autoSizeStrategy = {
@@ -18,7 +17,7 @@ export default function Playlist({ playlist }) {
 
     { field: 'song', flex: 3, cellStyle: { paddingLeft: 5, paddingRight: 5 } },
   ];
-  console.log(playlist);
+
   return (
     <div
       className="ag-theme-quartz" // applying the Data Grid theme
