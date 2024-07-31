@@ -26,7 +26,7 @@ export default function Playlist({ playlist }) {
     >
       <AgGridReact
         rowData={playlist}
-        rowSelection="none"
+        suppressRowClickSelection={true}
         columnDefs={colDefs}
         autoSizeStrategy={autoSizeStrategy}
       />
