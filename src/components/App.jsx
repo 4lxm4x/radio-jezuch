@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import * as React from 'react';
 import Playlist from './Playlist/Playlist';
 // import Fun from './Fun/Fun';
 import Info from './Info/Info';
@@ -8,22 +9,21 @@ import {
   BottomNavigation,
   Paper,
   Box,
+  Modal,
+  Fade,
+  Tooltip,
 } from '@mui/material';
 import { FaList, FaListAlt } from 'react-icons/fa';
 import { CgReorder } from 'react-icons/cg';
 import { colors } from 'utils/Colors';
 
-// import ScaleLoader from 'react-spinners/ScaleLoader';
-
 export const App = () => {
   const [play, setPlay] = useState(false);
   const [isPlistVisible, setIsPlistVisible] = useState(false);
   const [playlist, setPlaylist] = useState([]);
-  // const firstRender = useRef(false);
 
   function handlePlay(status) {
     setPlay(status);
-    // firstRender.current = true;
   }
   function showPlaylist() {
     setIsPlistVisible(true);
@@ -35,7 +35,6 @@ export const App = () => {
   function handlePlaylist(e) {
     setPlaylist(e);
   }
-
   return (
     <Box
       sx={{
@@ -44,7 +43,37 @@ export const App = () => {
         alignItems: 'center',
       }}
     >
-      <Box>Радіо Єзуч</Box>
+      <Box>Радіо Поросятко</Box>
+      {play && (
+        <Modal
+          open={isPlistVisible}
+          onClose={hidePlaylist}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Fade in={isPlistVisible}>
+            <Box
+              sx={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '80%',
+                height: '72%',
+                // bgcolor: 'background.paper',
+                // border: '2px solid #000',
+                boxShadow: 24,
+                borderRadius: 5,
+                p: 0,
+                // position: 'relative',
+              }}
+            >
+              <Playlist playlist={playlist} />
+              {/* Lorem ipsum dolor sit amet consectetur. */}
+            </Box>
+          </Fade>
+        </Modal>
+      )}
       <Paper
         sx={{ boxShadow: 2 }}
         style={{
@@ -64,8 +93,8 @@ export const App = () => {
       >
         {play && <Info playlist={handlePlaylist} />}
         <Player onPlay={handlePlay} />
-        {play && isPlistVisible && <Playlist playlist={playlist} />}
       </Paper>
+
       <Paper
         sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
         elevation={3}
@@ -74,8 +103,9 @@ export const App = () => {
           {!isPlistVisible && (
             <BottomNavigationAction
               label="Show Playlist"
+              disabled={!play}
               onClick={showPlaylist}
-              sx={{ color: colors.main }}
+              sx={{ color: play ? colors.main : 'grey' }}
               icon={<FaList size={'2em'} />}
             />
           )}
@@ -87,11 +117,14 @@ export const App = () => {
               icon={<FaListAlt size={'2em'} />}
             />
           )}
-          <BottomNavigationAction
-            label="Order Table"
-            sx={{ color: colors.main }}
-            icon={<CgReorder size={'2em'} />}
-          />
+          <Tooltip title="underDev" arrow>
+            <BottomNavigationAction
+              label="Order Table"
+              // disabled
+              sx={{ color: 'grey' }}
+              icon={<CgReorder size={'2em'} />}
+            />
+          </Tooltip>
         </BottomNavigation>
       </Paper>
     </Box>

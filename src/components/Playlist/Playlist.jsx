@@ -6,44 +6,50 @@ import { Box } from '@mui/system';
 import Song from './Song';
 
 export default function Playlist({ playlist }) {
-  const autoSizeStrategy = {
-    type: 'fitCellContents',
-  };
+  // const autoSizeStrategy = {
+  //   type: 'fitCellContents',
+  // };
   const colDefs = [
     {
       field: 'time',
       flex: 1,
-      width: 61,
+      width: 80,
       cellStyle: {
         padding: 1,
         textAlign: 'center',
       },
+      resizable: false,
+      sort: 'desc',
     },
 
     {
       field: 'song',
+
       flex: 3,
       cellRenderer: Song,
-      cellStyle: { paddingLeft: 5, paddingRight: 5, width: '65%' },
+      esizable: false,
+      cellStyle: { paddingLeft: 5, paddingRight: 5, width: '80vw' },
     },
   ];
 
   return (
     <Box
-      sx={{
-        zIndex: 'modal',
-        position: 'absolute',
-        bottom: 70,
-        overflow: 'hidden',
-      }}
+      sx={
+        {
+          // zIndex: 'modal',
+          // position: 'absolute',
+          // bottom: 70,
+          // overflow: 'hidden',
+        }
+      }
       className="ag-theme-quartz" // applying the Data Grid theme
-      style={{ height: '70%', width: '80%' }}
+      style={{ height: '100%' }}
     >
       <AgGridReact
         rowData={playlist}
         suppressRowClickSelection={true}
         columnDefs={colDefs}
-        autoSizeStrategy={autoSizeStrategy}
+        // autoSizeStrategy={autoSizeStrategy}
       />
     </Box>
   );
